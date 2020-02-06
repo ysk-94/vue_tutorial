@@ -50,8 +50,9 @@ var app6 = new Vue({
     }
 });
 
+// コンポーネント作る
 Vue.component('todo-item', {
-    props: ['todo'],
+    props: ['todo'], // prop 
     template: '<li>{{ todo.text }}</li>'
 });
 
@@ -65,3 +66,23 @@ var app7 = new Vue({
         ]
     }
 })
+
+const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+        increment(state) {
+            state.count++;
+        }
+    }
+});
+
+const Counter = {
+    template: `<div>{{ count}} </div>`,
+    computed: {
+        count() {
+            return store.state.count;
+        }
+    }
+}
